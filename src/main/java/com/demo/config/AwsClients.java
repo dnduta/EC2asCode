@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.elasticloadbalancingv2.ElasticLoadBalancingV2Client;
 
 @Component
 public class AwsClients {
@@ -25,5 +27,14 @@ public class AwsClients {
     public AwsBasicCredentials credentials()
     {
         return  AwsBasicCredentials.create(accessKey, secret);
+    }
+
+    @Bean
+    public ElasticLoadBalancingV2Client elb()
+    {
+        return ElasticLoadBalancingV2Client.builder()
+                .credentialsProvider(credentialsProvider())
+                .region(Region.US_EAST_2)
+                .build();
     }
 }
