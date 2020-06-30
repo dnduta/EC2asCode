@@ -22,9 +22,8 @@ public class CreateLoadBalancer {
 
     private String lbName = "demoAwsLB";
     private String tgName = "demoAwsTG";
-    private Integer tgPort = 80;
-
-    private Integer listenerPort;
+    private Integer tgPort = 3000;
+    private Integer listenerPort = 80;
     // returned values
     public String lbArn;
     public String tgArn;
