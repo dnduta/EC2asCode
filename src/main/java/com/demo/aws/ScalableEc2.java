@@ -27,6 +27,7 @@ public class ScalableEc2 {
     private String[] aZones = new String[]{"us-east-2a", "us-east-2b", "us-east-2c"};;
     private String policyName = "AwsDemoAutoScaling";
     private String policyType = "TargetTrackingScaling";
+    private String adjustmentType = "ChangeInCapacity";;
 
 
     public void launchConfig()
@@ -62,7 +63,7 @@ public class ScalableEc2 {
     public void autoScalingPolicy()
     {
         PutScalingPolicyRequest policyRequest = PutScalingPolicyRequest.builder()
-                .adjustmentType("ChangeIn")
+                .adjustmentType(adjustmentType)
                 .autoScalingGroupName(asgName)
                 .policyName(policyName)
                 .policyType(policyType)
