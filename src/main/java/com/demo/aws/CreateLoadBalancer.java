@@ -19,6 +19,8 @@ public class CreateLoadBalancer {
 
     @Value("${aws.subnets}")
     private String[] subnets;
+    @Value("${aws.secGrpName}")
+    private String secGrpName;
 
     private String lbName = "demoAwsLB";
     private String tgName = "demoAwsTG";
@@ -33,7 +35,7 @@ public class CreateLoadBalancer {
         CreateLoadBalancerRequest request = CreateLoadBalancerRequest.builder()
                 .subnets(subnets)
                 .name(lbName)
-                //.securityGroups(sgName)
+                .securityGroups(secGrpName)
                 .build();
 
         CreateLoadBalancerResponse loadBalancerResponse = loadBalancingV2Client.createLoadBalancer(request);
